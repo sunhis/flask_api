@@ -1,0 +1,60 @@
+/user/info  个人信息
+get {各平台账号}  无参数
+post 修改个人信息   # params  nickname 昵称  password 密码  管理员可以传入 user_id
+超级管理员还要有账号管理权限
+
+/user/add_account  添加平台账号  post
+# params user_id,plat_id,account_name,plat_name,account_login_name,account_login_password
+只支持个人用户上传自己的账户，超级管理员现在还不能给别的用户加入账户,
+修改账户也是使用这个接口
+
+/user/del_account  删除平台账号（批量删除） post
+# params     普通用户 plat_id account_login_name  管理员  user_id plat_id  account_login_name  login_name 之间用;隔开 多个plat_id 之间用;隔开， 2者位置要对应
+管理员可以删除其他用户的账号
+
+/user/video_info  个人视频信息 post
+# params  user_id, plat_id, account_name, page_count, page_num,determined,start=None,end=None
+page_count 每次调用返回多少条数据 默认20
+page_num  第几页 默认1
+determined flow_count or add_time
+start ,end 标准时间格式  YYYY-MM-DD hh:mm:ss
+以上参数都是可选
+
+/user/change_video  post
+# parmas  flow_id  tag adv_id audit_status user_id  超级管理员不需要user_id
+除了 user_id 可选 ，其他都必选
+
+
+/user/flow_count  get
+# params user_id,plat_id,account_id,start,end,account_name,title_name
+以上所有参数 可选 start 和end 要求 标准时间格式  YYYY-MM-DD HH:MM:SS
+
+
+/user/choice
+# parmas user_id 默认当前用户
+
+获得当前用户下的所有平台的所有账户
+
+
+/user/select_account post
+# params user_id  plat_id
+返回符合上述条件的 account
+
+
+//超级管理员
+查看所有用户
+对普通用户 增 删
+
+改 1.改密码 /user/info  传入 user_id
+  2.增加账号 /user/add_account 传入 user_id
+  3.删除账号 /user/del_account 传入 user_id
+
+验证码  不在v1 前缀下面了
+/check_code/code
+返回头里面 x-verifying-code 即为验证码值
+返回值即为图片数据
+$.get("/check_code/code")
+.then((res)=>{
+  var value = res.headers['x-verifying-code']
+  $("#form").append($("<img></img>").attr("src",res.body))
+})

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall gunicorn
+gunicorn run:app -w 4 -p rocket.pid -b 127.0.0.1:8000 -D

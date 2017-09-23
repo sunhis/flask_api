@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='http://libs.baidu.com/jquery/2.1.1/jquery.min.js'></script>
+</head>
+<body>
+<input type="text" id="name" placeholder="user">
+<input type="text" id="pw" placeholder="pw">
+<input type="button" name=""  value='tijiao' id="submit">
+
+<script>
+    $("#submit").click(function (e) {
+        e.preventDefault()
+        name = $("#name").val()
+        pw= $("#pw").val()
+        $.ajax("http://localhost:5000/v1/login",
+            {
+                type:"POST",
+                data:{
+                    username:name,
+                    password:pw,
+                    remember:1
+                },
+                success:function (res) {
+                    console.log("res,",res)
+                    $.get("http://localhost:5000/v1/person").then(function(res){console.log(res)})
+
+
+
+                }
+            }
+
+        )
+    })
+</script>
+</body>
+</html>

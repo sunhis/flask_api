@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <script src='http://libs.baidu.com/jquery/2.1.1/jquery.min.js'></script>
+</head>
+<body>
+<form action="">
+    <input type="text" id="name" placeholder="name">
+    <input type="password" id='pw'placeholder="pass">
+    <input type="text" id ='nick' placeholder="nick">
+    <input type="button" name="" id="submit">
+</form>
+<script>
+    (function () {
+        $("#submit").click(function (e) {
+            e.preventDefault()
+            name = $("#name").val()
+            pw = $("#pw").val()
+            nick = $("#nick").val()
+            $.ajax('http://localhost:5000/v1/register',{
+                type:"POST",
+                data:{
+                    username:name,
+                    password:pw,
+                    nickname:nick
+                },
+                success:function (res) {
+                    console.log("res",res)
+                }
+            })
+        })
+    })()
+</script>
+</body>
+</html>
