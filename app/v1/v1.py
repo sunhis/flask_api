@@ -295,33 +295,6 @@ def info_u():
             "message":"参数不全"
         })
 
-
-'''
-@v1.route("/user/add_account",methods=['POST'])
-@allow_cross_domain
-@login_required
-def user_add_account():
-    # params user_id,plat_id,account_name,plat_name,account_login_name,account_login_password
-    form = request.form
-    form['user_id'] = current_user.id
-    if   form.get("plat_id") and form.get("account_name") and form.get("plat_name")  :
-        status = models.add_account(**form)
-        if status:
-            return jsonify({
-                "status": "success",
-                "message": "添加账户成功"
-            })
-        return jsonify({
-            "status":"failed",
-            "message":"添加失败"
-        })
-    return jsonify({
-        "status":"failed",
-        "message": "参数不全"
-    })
-'''
-
-
 @v1.route("/user/del_account",methods=['POST'])
 @allow_cross_domain
 @login_required
