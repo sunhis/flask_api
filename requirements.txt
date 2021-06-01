@@ -31,7 +31,7 @@ SQLAlchemy==1.1.13
 tblib==1.3.2
 tornado==4.5.1
 u-msgpack-python==2.4.1
-urllib3==1.22
+urllib3==1.26.5
 watchdog==0.8.3
 Werkzeug==0.12.2
 WsgiDAV==2.2.2
