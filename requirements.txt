@@ -17,7 +17,7 @@ lxml==3.8.0
 MarkupSafe==1.0
 olefile==0.44
 pathtools==0.1.2
-Pillow==4.2.1
+Pillow==8.2.0
 pycurl==7.43.0
 PyJWT==1.4.2
 PyMySQL==0.7.11
